@@ -1,0 +1,15 @@
+const fs = require("fs");
+const crypto = require("crypto");
+
+function calculateHash(filePath) {
+  const fileBuffer = fs.readFileSync(filePath);
+
+  return crypto
+    .createHash("sha256")
+    .update(fileBuffer)
+    .digest("hex");
+}
+
+const hash = calculateHash("example.txt");
+
+console.log("SHA-256:", hash);
